@@ -12,7 +12,17 @@ Lete.StampaProdotto();
 Lavatrice.StampaProdotto();
 Tonno.StampaProdotto();
 
-Lete.Bevi(0.5);
+Lete.Bevi(0.2);
+Lete.Bevi(0.8);
+Lete.Svuota(0.3);
+Lete.Riempi(0.5);
+
+
+
+
+
+
+/*
 Lete.Riempi(0.5);
 Lete.Bevi(0.5);
 Lete.Svuota(0.5);
@@ -20,7 +30,7 @@ Lete.Riempi(0.5);
 Lete.Bevi(0.5);
 Lete.Riempi(0.5);
 Lete.Svuota(2);
-
+*/
 
 
 

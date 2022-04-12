@@ -13,26 +13,26 @@ namespace CsharpShop2
         public string materialeBottiglie;
         public double ph;
         public string sorgente;
-        public double litriDisponibili;
+        private double maxLitriBottiglia;
 
-        public Acqua(string nome, string descrizione, double prezzo, int iva, int numeroBottiglie, double litri, string materiale, double ph, string sorgente) : base(nome, descrizione, prezzo, iva)
+        public Acqua(string nome, string descrizione, double prezzo, int iva, int numeroBottiglie, double litri, string materiale, double ph, string sorgente, double maxLitridisponibili) : base(nome, descrizione, prezzo, iva)
         {
             this.numeroBottiglie = numeroBottiglie;
             this.litri = litri;
             this.materialeBottiglie = materiale;
             this.ph = ph;
             this.sorgente = sorgente;
-            this.litriDisponibili = 0;
-            
+            this.maxLitriBottiglia = litri;
         }
 
-        public void Bevi(double litriDaBere)
+        public void Bevi(double litriCheBevo)
         {
-            if (this.litri - litriDaBere > 0)
+            if (this.litri - litriCheBevo > 0)
             {
-                this.litri = this.litri - litriDaBere;
-                Console.WriteLine($"Ho bevuto {litriDaBere} litri");
-                Console.WriteLine($"Mi restano {this.litri} litri da bere");
+                double litriRimasti = this.litri - litriCheBevo;
+                this.litri = this.litri - litriCheBevo;
+                Console.WriteLine($"Ho bevuto {litriCheBevo} litri");
+                Console.WriteLine($"Mi restano {litriRimasti} litri da bere");
 
             }
             else
@@ -42,21 +42,42 @@ namespace CsharpShop2
             }
         }
 
+        public void Svuota(double litriCheSvuoto)
+        {
+            if (litriCheSvuoto >= this.litri)
+            {
+                Console.WriteLine("Hai svuotato tutta la bottiglia");
+            }
+            else
+            {
+                double litriRimasti;
+                litriRimasti = this.litri - litriCheSvuoto;
+                this.litri = this.litri - litriCheSvuoto;
+                Console.WriteLine($"Ho svuotato {litriCheSvuoto} litri");
+                Console.WriteLine($"Mi restano {litriRimasti} litri");
+            }
+        }
 
-        
+
         public void Riempi(double litriCheRiempio)
         {
-            double bottigliaDopoEssereStataRiempita = litriDisponibili + litriCheRiempio;
+            maxLitriBottiglia = 2;
+            double bottigliaDopoEssereStataRiempita = this.litri + litriCheRiempio;
+            double litriDisponibili;
+
             if (litriCheRiempio < 0)
             { 
                 Console.WriteLine($"Nope");
                 return;
 
             }
-            if(bottigliaDopoEssereStataRiempita < litri)
+            else if(bottigliaDopoEssereStataRiempita < maxLitriBottiglia)
             {
                 litriDisponibili = bottigliaDopoEssereStataRiempita;
-                Console.WriteLine($"Ho riempito la bottiglia con : {bottigliaDopoEssereStataRiempita} litri");
+                this.litri = this.litri + litriCheRiempio;
+                Console.WriteLine($"Ho riempito la bottiglia con : {litriCheRiempio} litri");
+                Console.WriteLine($"Mi restano : {bottigliaDopoEssereStataRiempita} litri");
+
             }
             else
             {
@@ -65,18 +86,7 @@ namespace CsharpShop2
             }
         }
         
-        public void Svuota(double litriCheSvuoto)
-        {
-            if(litriCheSvuoto >= litri)
-            {
-                Console.WriteLine("Hai svuotato tutta la bottiglia");
-            } else
-            {
-                litriDisponibili = litri - litriCheSvuoto;
-                Console.WriteLine($"Ho svuotato {litriCheSvuoto} litri");
-                Console.WriteLine($"Mi restano {litriDisponibili} litri");
-            }
-        }
+        
 
         public static void ConvertiInGalloni(double litri)
         {
