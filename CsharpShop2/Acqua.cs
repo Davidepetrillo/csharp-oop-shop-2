@@ -61,17 +61,16 @@ namespace CsharpShop2
 
         public void Riempi(double litriCheRiempio)
         {
-            maxLitriBottiglia = 2;
             double bottigliaDopoEssereStataRiempita = this.litri + litriCheRiempio;
             double litriDisponibili;
 
             if (litriCheRiempio < 0)
-            { 
+            {
                 Console.WriteLine($"Nope");
                 return;
 
             }
-            else if(bottigliaDopoEssereStataRiempita < maxLitriBottiglia)
+            else if (bottigliaDopoEssereStataRiempita < maxLitriBottiglia)
             {
                 litriDisponibili = bottigliaDopoEssereStataRiempita;
                 this.litri = this.litri + litriCheRiempio;
@@ -85,8 +84,9 @@ namespace CsharpShop2
                 litriDisponibili = litri;
             }
         }
-        
-        
+
+
+
 
         public static void ConvertiInGalloni(double litri)
         {
