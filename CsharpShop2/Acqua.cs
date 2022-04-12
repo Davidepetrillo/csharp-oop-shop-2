@@ -13,7 +13,7 @@ namespace CsharpShop2
         public string materialeBottiglie;
         public double ph;
         public string sorgente;
-
+        public double litriDisponibili;
 
         public Acqua(string nome, string descrizione, double prezzo, int iva, int numeroBottiglie, double litri, string materiale, double ph, string sorgente) : base(nome, descrizione, prezzo, iva)
         {
@@ -22,6 +22,8 @@ namespace CsharpShop2
             this.materialeBottiglie = materiale;
             this.ph = ph;
             this.sorgente = sorgente;
+            this.litriDisponibili = 0;
+            
         }
 
         public void Bevi(double litriDaBere)
@@ -41,6 +43,48 @@ namespace CsharpShop2
         }
 
 
+        
+        public void Riempi(double litriCheRiempio)
+        {
+            double bottigliaDopoEssereStataRiempita = litriDisponibili + litriCheRiempio;
+            if (litriCheRiempio < 0)
+            { 
+                Console.WriteLine($"Nope");
+                return;
+
+            }
+            if(bottigliaDopoEssereStataRiempita < litri)
+            {
+                litriDisponibili = bottigliaDopoEssereStataRiempita;
+                Console.WriteLine($"Ho riempito la bottiglia con : {bottigliaDopoEssereStataRiempita} litri");
+            }
+            else
+            {
+                Console.WriteLine("Mi dispiace ma hai traboccato");
+                litriDisponibili = litri;
+            }
+        }
+        
+        public void Svuota(double litriCheSvuoto)
+        {
+            if(litriCheSvuoto >= litri)
+            {
+                Console.WriteLine("Hai svuotato tutta la bottiglia");
+            } else
+            {
+                litriDisponibili = litri - litriCheSvuoto;
+                Console.WriteLine($"Ho svuotato {litriCheSvuoto} litri");
+                Console.WriteLine($"Mi restano {litriDisponibili} litri");
+            }
+        }
+
+        public static void ConvertiInGalloni(double litri)
+        {
+            const double CostanteDiConversione = 3.785;
+            double ConversioneLitriInGalloni = litri * CostanteDiConversione;
+            Console.WriteLine($"Galloni: {ConversioneLitriInGalloni} galloni");
+        }
+
 
         public override void StampaProdotto()
         {
@@ -50,6 +94,7 @@ namespace CsharpShop2
             Console.WriteLine("Descrizione: " + descrizione);
             Console.WriteLine($"Numero bottiglie: {numeroBottiglie}");
             Console.WriteLine($"Litri: {litri}/bottiglia");
+            ConvertiInGalloni(litri);
             Console.WriteLine($"Materiale bottiglie: {materialeBottiglie}");
             Console.WriteLine($"Prezzo: {prezzo} euro");
             Console.WriteLine($"IVA: {iva}%");
