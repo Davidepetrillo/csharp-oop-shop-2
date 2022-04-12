@@ -69,7 +69,8 @@ namespace CsharpShop2
         public double PrezzoPiuIva(double prezzo, int iva)
         {
             double prezzoFinale = prezzo + ((prezzo * iva) / 100);
-            return prezzoFinale;
+            double prezzoFinaleArrotondato = Math.Round(prezzoFinale, 2);
+            return prezzoFinaleArrotondato;
         }
 
         public void Identificativo(long codice, string nome)

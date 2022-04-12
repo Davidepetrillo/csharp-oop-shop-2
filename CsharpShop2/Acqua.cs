@@ -52,9 +52,10 @@ namespace CsharpShop2
             {
                 double litriRimasti;
                 litriRimasti = this.litri - litriCheSvuoto;
+                double litriRimastiArrotondati = Math.Round(litriRimasti, 2);
                 this.litri = this.litri - litriCheSvuoto;
                 Console.WriteLine($"Ho svuotato {litriCheSvuoto} litri");
-                Console.WriteLine($"Mi restano {litriRimasti} litri");
+                Console.WriteLine($"Mi restano {litriRimastiArrotondati} litri");
             }
         }
 
