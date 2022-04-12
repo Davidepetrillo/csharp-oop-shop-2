@@ -11,3 +11,7 @@ Banana.StampaProdotto();
 Lete.StampaProdotto();
 Lavatrice.StampaProdotto();
 Tonno.StampaProdotto();
+
+Lete.Bevi(1);
+Lete.Bevi(0.5);
+

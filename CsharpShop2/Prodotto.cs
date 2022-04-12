@@ -93,8 +93,8 @@ namespace CsharpShop2
             Console.WriteLine($"Prezzo: {prezzo} euro");
             Console.WriteLine($"IVA: {iva}%");
             Console.WriteLine($"Prezzo finale: {PrezzoPiuIva(prezzo, iva)} euro");
+            Console.WriteLine($"Codice esteso: {PadLeft()}");
             Identificativo(codice, nome);
-            PadLeft();
             Console.WriteLine("------------------");
 
         }

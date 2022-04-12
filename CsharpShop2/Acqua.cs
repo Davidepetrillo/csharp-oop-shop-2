@@ -24,6 +24,24 @@ namespace CsharpShop2
             this.sorgente = sorgente;
         }
 
+        public void Bevi(double litriDaBere)
+        {
+            if (this.litri - litriDaBere > 0)
+            {
+                this.litri = this.litri - litriDaBere;
+                Console.WriteLine($"Ho bevuto {litriDaBere} litri");
+                Console.WriteLine($"Mi restano {this.litri} litri da bere");
+
+            }
+            else
+            {
+                Console.WriteLine("Mi dispiace ma la bottiglia è finita");
+                this.litri = 0;
+            }
+        }
+
+
+
         public override void StampaProdotto()
         {
             Console.WriteLine("----- Prodotto -------");
